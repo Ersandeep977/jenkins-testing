@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     stages {
         stage('Git_Code_Downloding') {
             steps {
@@ -22,16 +21,16 @@ pipeline {
                 sh 'java -jar /var/lib/jenkins/workspace/pipeline-1/testing.jar'
             }
         }
-        stage('Dockerfile_Design')
-        {
-            steps
-            {
-                sh '''cat >Dockerfile<<EOF
-                    FROM tomee 
-                    MAINTAINER sandeep
-                    COPY  webapp /var/lib/jenkins/workspace/pipeline-1/webapp/target/webapp.war
-                EOF'''    
-            }
-        }    
+        // stage('Dockerfile_Design')
+        // {
+        //     steps
+        //     {
+        //         sh '''cat >Dockerfile<<EOF
+        //             FROM tomee 
+        //             MAINTAINER sandeep
+        //             COPY  webapp /var/lib/jenkins/workspace/pipeline-1/webapp/target/webapp.war
+        //         EOF'''    
+        //     }
+        // }    
     }
 }
