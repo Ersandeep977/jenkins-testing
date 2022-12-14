@@ -1,10 +1,14 @@
 pipeline {
     agent any
-
     stages {
-        stage('Hello') {
+        stage('Git_Code_Downloding') {
             steps {
-                echo 'Hello World'
+                git 'https://github.com/Ersandeep977/DevOps-Maven-code.git'
+            }
+        }
+        stage('Code_Building') {
+            steps {
+                echo "hello"
             }
         }
     }
