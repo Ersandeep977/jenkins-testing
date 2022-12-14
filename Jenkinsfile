@@ -16,5 +16,10 @@ pipeline {
                 git 'https://github.com/Ersandeep977/DevOps-FunctionTesting-code.git'
             }
         }
+        stage('Code_Testing') {
+            steps {
+                sh 'java -jar testing.jar'
+            }
+        }
     }
 }
