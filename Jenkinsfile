@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Function_Testing_Code_Downlod') {
             steps {
-                git ' https://github.com/Ersandeep977/DevOps-FunctionTesting-code.git'
+              //  git ' https://github.com/Ersandeep977/DevOps-FunctionTesting-code.git'
             }
         }
         stage('DockerFile_Cration') {
