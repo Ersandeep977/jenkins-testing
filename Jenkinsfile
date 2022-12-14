@@ -8,7 +8,12 @@ pipeline {
         }
         stage('Code_Building') {
             steps {
-                echo "hello"
+                sh 'mvn package'
+            }
+        }
+        stage('Functional_testing_code_Downdoling') {
+            steps {
+                git 'https://github.com/Ersandeep977/DevOps-FunctionTesting-code.git'
             }
         }
     }
