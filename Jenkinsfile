@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Function_Testing') {
             steps {
-                sh 'java -jar /var/lib/jenkins/workspace/pipeline-1/testing.jar'
+                sh 'java -jar /var/lib/jenkins/workspace/pipleine-1/testing.jar'
             }
         }
         // stage('Dockerfile_Design')
