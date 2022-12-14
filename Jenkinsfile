@@ -7,12 +7,13 @@ pipeline {
                 {
                    try
                    {
-                       git 'https://github.com/Ersandeep977/DevOpsssss-Maven-code.git'
+                       git 'https://github.com/Ersandeep977/DevOps-Maven-code.git'
+                       echo 'Git Code Downloding .....DON'
                    }
                    catch(Exception e1)
                    {
                      echo "Git Downloading Not woring plz check..."
-                      exit(1)
+                     exit(1)
                    }
                 }
             }
@@ -24,42 +25,105 @@ pipeline {
                    try
                    {
                     sh 'mvn package'
+                    echo 'MVN Package .....DON'
                    }
                    catch(Exception e2)
                    {
                      echo "MVN Packges Not woring plz check..."
+                     exit(1)
                    }
                 }
             }
         }
         stage('Functional_testing_code_Downdoling') {
             steps {
-                git 'https://github.com/Ersandeep977/DevOps-FunctionTesting-code.git'
+                script
+                {
+                   try
+                   {
+                    git 'https://github.com/Ersandeep977/DevOps-FunctionTesting-code.git'
+                   echo 'Functional testing Code Downloding .....DON'
+                   }
+                   catch(Exception e3)
+                   {
+                     echo "Functional testing code Not Download plz check..."
+                     exit(1)
+                   }
+                }
             }
         }
         stage('Code_Testing') {
             steps {
-                sh 'java -jar testing.jar'
+                script
+                {
+                   try
+                   {
+                    sh 'java -jar testing.jar'
+                    echo 'Code Testing .....DON'
+                   }
+                   catch(Exception e4)
+                   {
+                     echo "Functional testing Not woring plz check..."
+                     exit(1)
+                   }
+                }
             }
         }
         stage('Dockerfile_Cration') {
             steps {
-                sh '''
-                cat >Dockerfile<<EOF
+                script
+                {
+                   try
+                   {
+                    sh '''
+                    cat >Dockerfile<<EOF
                     FROM tomee 
                     MAINTAINER Sandeep
                     COPY  webapp /usr/local/tomee/webapps/testapp.war
-                '''
+                    EOF
+                    '''
+                    echo 'Dockerfile Cration .....DON'
+                   }
+                   catch(Exception e5)
+                   {
+                     echo "Dockerfile Cration Not woring plz check..."
+                     exit(1)
+                   }
+                }
             }
         }
         stage('Docker_Images_Images_cration') {
             steps {
-                sh 'sudo docker build -t patel977/javaap:v1 .'
+                script
+                {
+                   try
+                   {
+                    sh 'sudo docker build -t patel977/javaap:v1 .'
+                    echo 'Docker Images Images cration.....DON'
+                   }
+                   catch(Exception e6)
+                   {
+                     echo "Docker Images Images cration Not woring plz check..."
+                     exit(1)
+                   }
+                }
             }
         }
         stage('Docker_Images_Push_Hub') {
             steps {
-                sh 'sudo docker push patel977/javaap:v1'
+                script
+                {
+                   try
+                   {
+                    sh 'sudo docker push patel977/javaap:v1'
+                    echo 'Docker Images Push Hub cration.....DON'
+                   }
+                   catch(Exception e7)
+                   {
+                     echo "Docker Images Push Hub Not woring plz check..."
+                     exit(1)
+                   }
+                }
             }
         }
     }
