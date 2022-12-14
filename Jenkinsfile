@@ -31,7 +31,7 @@ pipeline {
                 '''
             }
         }
-        stage('Docker_Images_Push_Hub') {
+        stage('Docker_Images_Images cration') {
             steps {
                 sh 'sudo docker build -t patel977/javaap:v1 .'
             }
