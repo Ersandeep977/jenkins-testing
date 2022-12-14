@@ -3,12 +3,32 @@ pipeline {
     stages {
         stage('Git_Code_Downloding') {
             steps {
-                git 'https://github.com/Ersandeep977/DevOps-Maven-code.git'
+                script
+                {
+                   try
+                   {
+                       git 'https://github.com/Ersandeep977/DevOps-Maven-code.git'
+                   }
+                   catch(Exception e1)
+                   {
+                     echo "Git Downloading Not woring plz check..."
+                   }
+                }
             }
         }
         stage('Code_Building') {
             steps {
-                sh 'mvn package'
+                script
+                {
+                   try
+                   {
+                    sh 'mvn package'
+                   }
+                   catch(Exception e2)
+                   {
+                     echo "MVN Packges Not woring plz check..."
+                   }
+                }
             }
         }
         stage('Functional_testing_code_Downdoling') {
