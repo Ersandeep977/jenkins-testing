@@ -21,5 +21,15 @@ pipeline {
                 sh 'java -jar testing.jar'
             }
         }
+        stage('Dockerfile_Cration') {
+            steps {
+                sh '''
+                cat >dockerfile<<EOF
+                    FROM tomee 
+                    MAINTAINER Sandeep
+                    COPY  webapp /usr/local/tomee/webapps/testapp.war
+                '''
+            }
+        }
     }
 }
