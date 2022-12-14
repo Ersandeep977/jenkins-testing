@@ -80,7 +80,6 @@ pipeline {
                     FROM tomee 
                     MAINTAINER Sandeep
                     COPY  webapp /usr/local/tomee/webapps/testapp.war
-                    EOF
                     '''
                     echo 'Dockerfile Cration .....DON'
                    }
