@@ -97,7 +97,7 @@ pipeline {
                 {
                    try
                    {
-                    sh 'sudo docker build -t patel977/javaap:v1 .'
+                    sh 'sudo docker build -t patel977/JavaAap:v1 .'
                     echo 'Docker Images Images cration.....DON'
                    }
                    catch(Exception e6)
@@ -114,7 +114,7 @@ pipeline {
                 {
                    try
                    {
-                    sh 'sudo docker push patel977/javaap:v1'
+                    sh 'sudo docker push patel977/JavaAap:v1'
                     echo 'Docker Images Push Hub cration.....DON'
                    }
                    catch(Exception e7)
