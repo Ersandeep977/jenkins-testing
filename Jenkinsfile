@@ -126,4 +126,27 @@ pipeline {
             }
         }
     }
+     post {
+        always {
+            echo "This block always runing....."
+        }
+        aborted {
+            echo "This block runs when the build process is aborted."
+        }
+        failure {
+            echo "This block runs when the build is failed."
+        }
+        success {
+            echo "This block runs when the build is succeeded."
+        }
+        unsuccessful {
+            echo "This block runs when the current status is anything except success."
+        }
+        unstable {
+            echo "This block runs if the current status is marked unstable."
+        }
+        changed {
+            echo "This block runs when the current status is different than the previous one."
+        }
+     }
 }
