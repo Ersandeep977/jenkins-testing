@@ -7,7 +7,7 @@ pipeline {
                 {
                    try
                    {
-                       git 'https://github.com/Ersandeep977/DevOps-Maven-code.git
+                       git 'https://github.com/Ersandeep977/DevOpsssss-Maven-code.git'
                    }
                    catch(Exception e1)
                    {
