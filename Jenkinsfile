@@ -12,6 +12,7 @@ pipeline {
                    catch(Exception e1)
                    {
                      echo "Git Downloading Not woring plz check..."
+                      exit(1)
                    }
                 }
             }
