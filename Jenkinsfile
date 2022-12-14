@@ -15,6 +15,17 @@ pipeline {
             steps {
                 git ' https://github.com/Ersandeep977/DevOps-FunctionTesting-code.git'
             }
+        }
+        stage('DockerFile_Cration') {
+            steps {
+                sh '''
+                cat >dockerfile<<EOF
+                    FROM tomee 
+                    MAINTAINER intelliqit
+                    COPY  webapp /var/lib/jenkins/workspace/pipleine-1/webapp/target/testapp.war
+                EOF
+                '''
+            }
         }    
     }
 }
