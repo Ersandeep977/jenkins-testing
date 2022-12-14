@@ -131,13 +131,13 @@ pipeline {
             echo "This block always runing....."
         }
         aborted {
-            echo "This block runs when the build process is aborted."
+            echo "build process is aborted.....................OK"
         }
         failure {
-            echo "This block runs when the build is failed."
+            echo "build is failed..............OK"
         }
         success {
-            echo "This block runs when the build is succeeded."
+            echo "build is succeeded........OK"
         }
         unsuccessful {
             echo "This block runs when the current status is anything except success."
