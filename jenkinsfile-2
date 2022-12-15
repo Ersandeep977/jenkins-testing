@@ -9,25 +9,15 @@ pipeline
                 sh '''
 cat >docker-compose.yml<<EOF
 ---
-version: '3.8'
+version: "3.9"
 services:
-  mydb:
-    image: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: sandeep
-  apache:
-    image: httpd
+  web:
+    build: .
     ports:
-      - 9999:80
-    links:
-      - mydb:mysql
-  php:
-    image: php:7.2-apache
-    links:
-      - mydb:mysql
-      - apache:httpd
-...                    
-                
+      - "8000:5000"
+  redis:
+    image: "redis:alpine"
+...                                    
 '''
 echo " Docker Compose file cation .......Don" 
             }
@@ -43,6 +33,14 @@ echo " Docker Compose file cation .......Don"
                 input 'Do you Want to Down '
                 sh 'sudo docker compose down'
                 echo 'Docker Compose down ..'
+            }
+        }
+        stage('all are the clear') {
+            steps {
+                input 'Do you Want to clear '
+                sh 'sudo docker rm -f $(docker ps -aq)'
+                sh'sudo docker system prune -af'
+                echo 'all are the clear ..'
             }
         }
 }
