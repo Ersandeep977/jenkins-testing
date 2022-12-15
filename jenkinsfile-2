@@ -1,8 +1,11 @@
-pipeline {
+pipeline 
+{
     agent any
-    stages {
+    stages 
+{
         stage('Docker_Composefile_Cration') {
             steps {
+                sh 'rm -rf docker-compose.yml'
                 sh '''
 cat >docker-compose.yml<<EOF
 ---
@@ -24,8 +27,9 @@ services:
       - mydb:mysql
       - apache:httpd
 ...                    
+                
 '''
-echo " Docker Compose file cation .......Don"   
+echo " Docker Compose file cation .......Don" 
             }
         }
         stage('Docker_compose_running') {
@@ -34,11 +38,12 @@ echo " Docker Compose file cation .......Don"
                 sh 'sudo docker compose up -d'
             }
         }
-        stage('Docker_compose_running') {
+        stage('Fast-3') {
             steps {
                 input 'Do you Want to Down '
                 sh 'sudo docker compose down'
+                echo 'Docker Compose down ..'
             }
         }
-    }
+}
 }
