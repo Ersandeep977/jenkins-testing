@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+    stages {
+        stage('Docker_Composefile_Cration') {
+            steps {
+                sh '''
+cat >docker-compose.yml<<EOF
+---
+version: '3.8'
+services:
+  mydb:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: sandeep
+  apache:
+    image: httpd
+    ports:
+      - 9999:80
+    links:
+      - mydb:mysql
+  php:
+    image: php:7.2-apache
+    links:
+      - mydb:mysql
+      - apache:httpd
+...                    
+'''
+echo " Docker Compose file cation .......Don"   
+            }
+        }
+        stage('Docker_compose_running') {
+            steps {
+                sleep time: 2, unit: 'NANOSECONDS'
+                sh 'sudo docker compose up -d'
+            }
+        }
+        stage('Docker_compose_running') {
+            steps {
+                input 'Do you Want to Down '
+                sh 'sudo docker compose down'
+            }
+        }
+    }
+}
