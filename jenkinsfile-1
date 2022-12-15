@@ -6,23 +6,14 @@ pipeline {
                 sh '''
 cat >docker-compose.yml<<EOF
 ---
-version: '3.8'
+version: "3.9"
 services:
-  mydb:
-    images: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: sandeep
-  apache:
-    image: httpd
+  web:
+    build: .
     ports:
-      - 8888:80
-    links:
-      - mydb:mysql
-  php:
-    image: php:7.2-apache
-    links:
-      - mydb:mysql
-      - apache:httpd
+      - "8000:5000"
+  redis:
+    image: "redis:alpine"
 ...                    
 '''
             }
