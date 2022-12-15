@@ -125,6 +125,23 @@ pipeline {
                 }
             }
         }
+        stage('Docker_Composefile_Runing') {
+            steps {
+                script
+                {
+                   try
+                   {
+                    sh 'date'
+                    echo 'Docker Composefile Runing Cration .....DON'
+                   }
+                   catch(Exception e8)
+                   {
+                     echo "Docker Composefile Runing Not woring plz check......."
+                     exit(1)
+                   }
+                }
+            }
+        }
     }
      post {
         always {
